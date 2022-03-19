@@ -4,6 +4,8 @@ import { Link, useHistory } from 'react-router-dom'
 import React, { useState, useEffect, useContext } from 'react';
 import {getPost} from '../../service/api.js'
 import { useParams } from 'react-router-dom';
+
+
 const useStyle = makeStyles(theme => ({
     container: {
         padding: '0 100px',

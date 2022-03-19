@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 
 const PostSchema = mongoose.Schema({
-    title: {
+    PHONE: {
         type: String,
         required: true
     },
@@ -14,10 +14,7 @@ const PostSchema = mongoose.Schema({
         type: String,
         required: false
     },
-    username: {
-        type: String,
-        required: true
-    },
+    
     categories: {
         type: Array,
         required: false   
@@ -37,7 +34,7 @@ const PostSchema = mongoose.Schema({
         type: String,
         required: false
     },
-    PHONE: {
+    username: {
         type: String,
         required: true
     }

@@ -12,10 +12,9 @@ const useStyle = makeStyles({
     write: {
         margin: 20,
         width: '85%',
-        background: '#6495ED',
-        color: '#fff',
+        background: 'white',
+        color: 'black',
         textDecoration: 'none',
-        fontWeight: 'Bold',
         fontSize: 15
 
     },
@@ -25,7 +24,6 @@ const useStyle = makeStyles({
     },
     cell : {
         fontSize: 15,
-        fontWeight: 'Bold'
     }
 })
 
@@ -36,7 +34,7 @@ const Categories = ({ match }) => {
     return (
         <>
             <Link to='/create' className={classes.link}>
-                <Button variant="contained" className={classes.write} >Create New</Button>
+                <Button variant="contained" className={classes.write}  >create new</Button>
             </Link>
             
             <Table className={classes.table}>

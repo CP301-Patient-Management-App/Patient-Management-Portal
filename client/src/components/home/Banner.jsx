@@ -3,6 +3,7 @@ import { makeStyles, Box, Typography } from '@material-ui/core';
 
 const useStyle = makeStyles({
     image: {
+        marginTop: 64,
         width: '100%',
         background: `url(${'https://blog.cureatr.com/hubfs/images/blog/care%20management%20program.jpg'}) center/55% repeat-x #000`,
         height: '50vh',
