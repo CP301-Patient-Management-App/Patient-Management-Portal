@@ -4,6 +4,7 @@ import { AddCircle} from '@material-ui/icons';
 import { useNavigate } from 'react-router-dom';
 
 import { createPost } from '../../service/api.js';
+// import { LoginContext } from '../../context/ContextProvider';
 
 const useStyle = makeStyles(theme => ({
     container: {
@@ -13,16 +14,15 @@ const useStyle = makeStyles(theme => ({
         },
     },
     image: {
-        marginTop: "5%",
         width: '100%',
         height: '50vh',
         objectFit: 'cover'
     },
-    circle: {
-        // marginTop: 10,
+    title: {
+        marginTop: 10,
         display: 'flex',
         flexDirection: 'row',
-        marginLeft : '60%'
+        float : "right"
     },
     textfield: {
         flex: 1,
@@ -42,27 +42,16 @@ const useStyle = makeStyles(theme => ({
     image : {
         width : '20%',
         display: 'flex',
-        // margin : "auto"
-        marginRight : 0,
-        marginLeft : "40%"
+        margin : "auto"
     },
     fields : {
         margin : 50,
         width : '20%'
-    }, 
-    publishButton : {
-        // float : 'right'
-        marginLeft : '45%'
-    }, 
-    imageCont : {
-        paddingTop : "2%",
-        display: 'flex',
-        flexDirection: 'column',
     }
 }));
 
 const initialPost = {
-    // title: '',
+    title: '',
     description: '',
     picture: '',
     username: 'Vinay',
@@ -77,8 +66,9 @@ const initialPost = {
 const CreateView = () => {
     const classes = useStyle();
     const navigate =   useNavigate();
-
+    
     const [post, setPost] = useState(initialPost);
+    const [category, setCategory] = useState('General');
     console.log(post.Imageurl);
     const url = post.Imageurl || 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLlQ9DL2jP_heI_mtZXdw8cxNdGunsejk7FQ&usqp=CAU';
 
@@ -90,14 +80,28 @@ const CreateView = () => {
     const handleChange = (e) => {
         setPost({ ...post, [e.target.name]: e.target.value });
     }
+    const handleMenu = (e) => {
+       // setPost({ ...post, [e.target.getAttribute("name")]: e.target.innerText });
+        setCategory(e.target.value);
+       // console.log(e.target.name);
+        setPost({ ...post, [e.target.name]: e.target.value });
+    }
+    
 
     return (
         <Box className={classes.container}>
-            
-            <div className={classes.imageCont}>
-                <img src={url} alt="post" className={classes.image} />
-                <AddCircle className={classes.circle} fontSize='large' color = "action" />
-            </div>
+            <img src={url} alt="post" className={classes.image} />
+
+            <FormControl className={classes.title}>
+                <AddCircle fontSize='large' color = "action" />
+                <InputBase 
+                    onChange = {(e) =>handleChange(e)}
+                    placeholder="Title" 
+                    className={classes.textfield} 
+                    name = 'title'
+                />
+                <Button onClick = {() => savePost()} variant="contained" color="primary">Publish</Button>
+            </FormControl>
             <TextField id="standard-basic" label="NAME" variant="standard" 
                 className={classes.fields}
                 onChange = {(e) =>handleChange(e)}
@@ -125,16 +129,15 @@ const CreateView = () => {
                     <Select
                         labelId="demo-simple-select-label"
                         id="demo-simple-select"
-                        // value={age}
-                        // label="Age"
-                        onChange = {(e) =>handleChange(e)}
-                        name = 'categories'
-                    >
-                    <MenuItem >General</MenuItem>
-                    <MenuItem >ENT</MenuItem>
-                    <MenuItem >Cardiovascular</MenuItem>
-                    <MenuItem >Injuries and accidents</MenuItem>
-                    <MenuItem >Skin and Respiratory</MenuItem>
+                        value = {category}
+                        name = "categories"
+                        onChange = {handleMenu}
+                      >
+                    <MenuItem   value = {'General'}>General</MenuItem>
+                    <MenuItem   value = {'ENT'}>ENT</MenuItem>
+                    <MenuItem   value = {'Cardiovascular'} >Cardiovascular</MenuItem>
+                    <MenuItem   value = {'Injuries and accidents'}>Injuries and accidents</MenuItem>
+                    <MenuItem   value = {'Skin and Respiratory'}>Skin and Respiratory</MenuItem>
                     </Select>
             </FormControl>
 
@@ -146,8 +149,7 @@ const CreateView = () => {
                 onChange={(e) => handleChange(e)} 
                 
             />
-
-            <Button  onClick = {() => savePost()} variant="contained" color="primary" className={classes.publishButton}> Publish </Button>
+            
         </Box>
     )
 }
