@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Box, makeStyles, TextareaAutosize, Button, FormControl, InputBase, TextField, MenuItem, Select, InputLabel } from '@material-ui/core';
-import { AddCircle} from '@material-ui/icons';
-import { useNavigate } from 'react-router-dom';
+import { AddCircle as Add, CallEnd } from '@material-ui/icons';
+import { useNavigate , useLocation } from 'react-router-dom';
 
-import { createPost } from '../../service/api.js';
+import { createPost , uploadFile } from '../../service/api.js';
 
 const useStyle = makeStyles(theme => ({
     container: {
@@ -11,6 +11,9 @@ const useStyle = makeStyles(theme => ({
         [theme.breakpoints.down('md')]: {
             margin: 0
         },
+    },
+    addIcon: {
+        paddingLeft: '60%'
     },
     image: {
         marginTop: "5%",
@@ -77,12 +80,33 @@ const initialPost = {
 const CreateView = () => {
     const classes = useStyle();
     const navigate =   useNavigate();
+    const location = useLocation();
 
     const [post, setPost] = useState(initialPost);
     const [category, setCategory] = useState('General');
+    const [file, setFile] = useState('');
+    const [imageURL, setImageURL] = useState('');
 
-    console.log(post.Imageurl);
+    
     const url = post.Imageurl || 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLlQ9DL2jP_heI_mtZXdw8cxNdGunsejk7FQ&usqp=CAU';
+
+
+    useEffect(() => {
+        const getImage = async () => { 
+            if(file) {
+                const data = new FormData();
+                data.append("name", file.name);
+                data.append("file", file);
+                
+                const image = await uploadFile(data);
+                post.picture = image.data;
+                setImageURL(image.data);
+            }
+        }
+        getImage();
+        // post.categories = location.search?.split('=')[1] || 'All'
+        
+    }, [file])
 
     const savePost = async () => {
         await createPost(post);
@@ -103,7 +127,17 @@ const CreateView = () => {
             
             <div className={classes.imageCont}>
                 <img src={url} alt="post" className={classes.image} />
-                <AddCircle className={classes.circle} fontSize='large' color = "action" />
+                <label htmlFor="fileInput">
+                    <Add className={classes.addIcon} fontSize="large" color="action" />
+                </label>
+                <input
+                    type="file"
+                    id="fileInput"
+                    style={{ display: "none" }}
+                    className={classes.circle}
+                    onChange={(e) => setFile(e.target.files[0])}
+                />
+                {/* <AddCircle   className={classes.circle} onChange={(e) => setFile(e.target.files[0])} fontSize='large' color = "action" /> */}
             </div>
             <TextField id="standard-basic" label="NAME" variant="standard" 
                 className={classes.fields}

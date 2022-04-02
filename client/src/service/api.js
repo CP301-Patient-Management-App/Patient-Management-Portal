@@ -2,6 +2,16 @@ import axios from 'axios';
 
 const URL = 'http://localhost:8000';
 
+export const uploadFile = async (post) => {
+    console.log(post);
+    try {
+        return await axios.post(`${URL}/file/upload`, post);
+    } catch (error) {
+        console.log('Error while calling uploadFile API ', error);
+    }
+}
+
+
 export const createPost = async (post) => {
     try {
         return await axios.post(`${URL}/create`, post);
@@ -10,9 +20,11 @@ export const createPost = async (post) => {
     }
 }
 
-export const getAllPosts = async () =>  {
+export const getAllPosts = async (param) =>  {
     try {
-        let response = await axios.get(`${URL}/posts`);
+        let response = await axios.get(`${URL}/posts/${param}`);
+        //console.log(response.data)
+        console.log(typeof(param));
         return response.data;
     } catch(error) {
         console.log('Error while calling getAllPosts API', error);

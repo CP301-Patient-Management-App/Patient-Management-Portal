@@ -1,6 +1,6 @@
 
 import { Button, Table, TableHead, TableRow, TableCell, TableBody, makeStyles, Grid } from '@material-ui/core';
-import { Link } from 'react-router-dom';
+import { Link,useLocation } from 'react-router-dom';
 
 import { categories } from '../../constants/data';
 
@@ -12,10 +12,13 @@ const useStyle = makeStyles({
     write: {
         margin: 20,
         width: '85%',
-        background: 'white',
+        background: '#E7F2F8',
         color: 'black',
         textDecoration: 'none',
-        fontSize: 15
+        fontSize: 15,
+        "&:hover" : {
+            background: '#74BDCB',
+          }
 
     },
     link: {
@@ -29,7 +32,7 @@ const useStyle = makeStyles({
 
 const Categories = ({ match }) => {
     const classes = useStyle();
-    // const location = useLocation();
+    const location = useLocation();
     // let params = new URLSearchParams(location.search);
     return (
         <>
@@ -40,9 +43,9 @@ const Categories = ({ match }) => {
             <Table className={classes.table}>
                 <TableHead>
                     <TableCell className = {classes.cell}>
-                        {/* <Link to={"/"} className={classes.link}> */}
-                            General
-                        {/* </Link> */}
+                    {/* <Link to={`/create/${location.search}`} style={{ textDecoration: 'none' }}>
+                        <Button variant="contained" className={classes.write}>Create Blog</Button>
+                    </Link> */}
                     </TableCell>
                 </TableHead>
                 <TableBody>
@@ -50,9 +53,9 @@ const Categories = ({ match }) => {
                         categories.map(category => (
                             <TableRow>
                                 <TableCell className = {classes.cell}>
-                                    {/* <Link to={`/?category=${category}`} className={classes.link}> */}
+                                    <Link to={`/?categories=${category}`} className={classes.link}>
                                         {category}
-                                    {/* </Link> */}
+                                    </Link>
                                 </TableCell>
                             </TableRow>
                         ))

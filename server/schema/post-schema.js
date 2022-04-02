@@ -16,7 +16,7 @@ const PostSchema = mongoose.Schema({
     },
     
     categories: {
-        type: Array,
+        type: String,
         required: false   
     },
     createdDate: {

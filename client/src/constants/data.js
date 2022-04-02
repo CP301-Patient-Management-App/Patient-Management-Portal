@@ -1,7 +1,8 @@
 export const categories = [
+    "General",
     "ENT",
     "Neurological and Mental Health",
     "Cardiovascular",
-    "Injuries and Accidents",
+    "Injuries and accidents",
     "Skin and Respiratory"
 ];

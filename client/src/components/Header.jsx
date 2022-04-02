@@ -11,7 +11,7 @@ const useStyle = makeStyles({
     container: {
         justifyContent: 'center',
         color : 'white',
-        background: 'black',
+        background: '#4b53bc',
 
         '&  > *': {
             padding: 20,
