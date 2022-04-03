@@ -20,6 +20,22 @@ export const createPost = async (post) => {
     }
 }
 
+export const updatePost = async (id, post) => {
+    try {
+        return await axios.put(`${URL}/update/${id}`, post);
+        
+    } catch(error) {
+        console.log('Error while calling updatePost API ', error)
+    }
+}
+export const deletePost = async (id) => {
+    try {
+        return await axios.delete(`${URL}/delete/${id}`);
+    } catch(error) {
+        console.log('Error while calling deletePost API ', error)
+    }
+}
+
 export const getAllPosts = async (param) =>  {
     try {
         let response = await axios.get(`${URL}/posts/${param}`);

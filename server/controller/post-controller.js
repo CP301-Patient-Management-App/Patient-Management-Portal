@@ -35,8 +35,12 @@ export const getAllPosts = async (request, response) =>  {
 		//console.log(request.query.categories);
 		let posts;
 		if(categories){
-			
+			if(categories != 'General'){
 			posts = await Post.find({categories: categories});
+			}
+			else{
+				posts = await Post.find({});
+			}
 		}
 		else{
         posts = await Post.find({});
@@ -56,6 +60,31 @@ export const getPost = async (request, response) => {
         response.status(500).json(error)
     }
 }
+
+export const updatePost = async (request, response) => {
+    try {
+        const post = await Post.findById(request.params.id);
+        
+        await Post.findByIdAndUpdate( request.params.id, { $set: request.body })
+
+        response.status(200).json('post updated successfully');
+    } catch (error) {
+        response.status(500).json(error);
+    }
+}
+
+export const deletePost = async (request, response) => {
+    try {
+        const post = await Post.findById(request.params.id);
+        console.log(post)
+        await post.delete()
+
+        response.status(200).json('post deleted successfully');
+    } catch (error) {
+        response.status(500).json(error)
+    }
+}
+
 export const registerUser = async (req, res) => {
 
 	try {

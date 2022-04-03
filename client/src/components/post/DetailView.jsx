@@ -2,8 +2,9 @@ import { Box, makeStyles, Typography, Grid, Button } from '@material-ui/core';
 import { Delete, Edit } from '@material-ui/icons';
 import { Link, useHistory } from 'react-router-dom'
 import React, { useState, useEffect, useContext } from 'react';
-import {getPost} from '../../service/api.js'
+import {getPost,updatePost,deletePost} from '../../service/api.js'
 import { useParams } from 'react-router-dom';
+import { useNavigate  } from 'react-router-dom';
 
 
 const useStyle = makeStyles(theme => ({
@@ -79,7 +80,7 @@ const useStyle = makeStyles(theme => ({
 
 const DetailView = ({ match }) =>{
     const classes = useStyle();
-    
+    const Navigate =   useNavigate();
     const [post, setPost] = useState({});
     const { id } = useParams();
    
@@ -92,6 +93,12 @@ const DetailView = ({ match }) =>{
         }
         fetchData();
     }, []);
+
+    const deleteRecord = async () => {    
+        await deletePost(id);
+        Navigate('/')
+    }
+
     const url = post.Imageurl || 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLlQ9DL2jP_heI_mtZXdw8cxNdGunsejk7FQ&usqp=CAU';
 
     return(
@@ -99,10 +106,13 @@ const DetailView = ({ match }) =>{
         <Box className={classes.container}>
             <img src = {post.picture || url} alt = "banner" className={classes.image}/>
             <Box className={classes.icons}>
+            <Button style={{background: '#E7F2F8'}}variant="contained">See Available Doctors</Button>
                 <Link to = {`/update/${post._id}`}>
                     <Edit className={classes.icon} color = 'primary'/>
                 </Link>
-                <Delete className={classes.icon} color = 'error'/>   
+                
+                <Delete onClick={() => deleteRecord()} className={classes.icon} color = 'error'/>   
+                
             </Box>
             {/* <Typography className={classes.heading}>{post.title}</Typography> */}
             </Box>

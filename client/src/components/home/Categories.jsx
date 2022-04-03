@@ -4,6 +4,7 @@ import { Link,useLocation } from 'react-router-dom';
 
 import { categories } from '../../constants/data';
 
+const have_color = '#ffffff';
 const useStyle = makeStyles({
     table: {
         border: '1px solid rgba(224, 224, 224, 1)',
@@ -33,6 +34,7 @@ const useStyle = makeStyles({
 const Categories = ({ match }) => {
     const classes = useStyle();
     const location = useLocation();
+
     // let params = new URLSearchParams(location.search);
     return (
         <>
@@ -52,7 +54,7 @@ const Categories = ({ match }) => {
                     {
                         categories.map(category => (
                             <TableRow>
-                                <TableCell className = {classes.cell}>
+                                <TableCell  className = {classes.cell}>
                                     <Link to={`/?categories=${category}`} className={classes.link}>
                                         {category}
                                     </Link>
