@@ -1,6 +1,7 @@
 
 // import post from '../schema/post-schema.js';
 import Post from '../schema/post-schema.js';
+import Doctor from '../schema/doctor-schema.js';
 import {User, validate} from '../schema/user-schema.js';
 // const validate = require('../schema/user-schema.js');
 // const bcrypt = require("bcrypt");
@@ -21,6 +22,18 @@ export const createPost = async (request, response) =>  {
 
     try {
         const post = await new Post(request.body);
+        post.save();
+
+        response.status(200).json('blog saved successfully');
+    } catch(error) {
+        response.status(500).json(error);
+    }
+}
+export const createDoctor = async (request, response) =>  {
+    console.log(request.body);
+
+    try {
+        const post = await new Doctor(request.body);
         post.save();
 
         response.status(200).json('blog saved successfully');

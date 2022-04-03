@@ -19,6 +19,13 @@ export const createPost = async (post) => {
         console.log('Error while calling createPost API ', error);
     }
 }
+export const createDoctor = async (post) => {
+    try {
+        return await axios.post(`${URL}/createDoctor`, post);
+    } catch (error) {
+        console.log('Error while calling createPost API ', error);
+    }
+}
 
 export const updatePost = async (id, post) => {
     try {

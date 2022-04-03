@@ -52,6 +52,10 @@ const useStyle = makeStyles(theme => ({
         textAlign: 'center',
         margin: '50px 0 10px 0'
     },
+    doc: {
+        background: '#bfd3d6',
+        marginBottom: '40px'
+    },
     subheading: {
         color: '#878787',
         display: 'flex',
@@ -106,7 +110,11 @@ const DetailView = ({ match }) =>{
         <Box className={classes.container}>
             <img src = {post.picture || url} alt = "banner" className={classes.image}/>
             <Box className={classes.icons}>
-            <Button style={{background: '#E7F2F8'}}variant="contained">See Available Doctors</Button>
+            <Button className = {classes.doc} style={{background: '#E7F2F8'}}variant="contained">
+               <Link to = {`/specialty`}>
+                See Available Doctors
+                </Link>
+                </Button>
                 <Link to = {`/update/${post._id}`}>
                     <Edit className={classes.icon} color = 'primary'/>
                 </Link>
