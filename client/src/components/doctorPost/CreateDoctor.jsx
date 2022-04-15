@@ -68,7 +68,7 @@ const initialPost = {
     // title: '',
     picture: '',
     // username: 'Dr.Me',
-    category: 'ENT',
+    categories: 'ENT',
     Experience: '',
     NAME : '',
     Imageurl : '',
@@ -174,13 +174,17 @@ const CreateDoctor = () => {
                         onChange = {handleMenu}
                       >
                     <MenuItem   value = {'ENT'}>ENT</MenuItem>
-                    <MenuItem   value = {'Cardiovascular'} >Cardiovascular</MenuItem>
-                    <MenuItem   value = {'Injuries and accidents'}>Injuries and accidents</MenuItem>
+                    <MenuItem   value = {'Cardiology'} >Cardiology</MenuItem>
+                    <MenuItem   value = {'Endocrinology'}>Endocrinology</MenuItem>
                     <MenuItem   value = {'Dermatology'}>Dermatology</MenuItem>
                     <MenuItem   value = {'Neurology'}>Neurology</MenuItem>
                     <MenuItem   value = {'Orthopaedics'}>Orthopaedics</MenuItem>
                     <MenuItem   value = {'General Surgery'}>General Surgery</MenuItem>
                     <MenuItem   value = {'Urology'}>Urology</MenuItem>
+                    <MenuItem   value = {'Diabetology'}>Diabetology</MenuItem>
+                    <MenuItem   value = {'Opthalmology'}>Opthalmology</MenuItem>
+                    <MenuItem   value = {'Psychiatry'}>Psychiatry</MenuItem>
+                    <MenuItem   value = {'Oncology'}>Oncology</MenuItem>
                     </Select>
             </FormControl>
 

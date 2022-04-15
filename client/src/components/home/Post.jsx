@@ -61,7 +61,7 @@ const useStyle = makeStyles({
 
 const Post = ({ post }) => {
     const classes = useStyle();
-    console.log(post.picture);
+    // console.log(post.picture);
     const imgurl = post.Imageurl || 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLlQ9DL2jP_heI_mtZXdw8cxNdGunsejk7FQ&usqp=CAU';
     const url = post.picture ? post.picture :  imgurl;  
     

@@ -47,7 +47,7 @@ export const getAllPosts = async (param) =>  {
     try {
         let response = await axios.get(`${URL}/posts/${param}`);
         //console.log(response.data)
-        console.log(typeof(param));
+        // console.log(typeof(param));
         return response.data;
     } catch(error) {
         console.log('Error while calling getAllPosts API', error);
@@ -57,6 +57,27 @@ export const getAllPosts = async (param) =>  {
 export const getPost = async (id) => {
     try {
         let response = await axios.get(`${URL}/post/${id}`);
+        return response.data;
+    } catch (error) {
+        console.log('Error while calling getPost API ', error);
+    }
+}
+
+export const getAllDoctors = async (param) =>  {
+    console.log(12121)
+    try {
+        console.log(param);
+        let response = await axios.get(`${URL}/speciality/${param}`);
+        console.log(response.data)
+        return response.data;
+    } catch(error) {
+        console.log('Error while calling getAllPosts API', error);
+    }
+}
+
+export const getDoctor = async (id) => {
+    try {
+        let response = await axios.get(`${URL}/speciality/${id}`);
         return response.data;
     } catch (error) {
         console.log('Error while calling getPost API ', error);

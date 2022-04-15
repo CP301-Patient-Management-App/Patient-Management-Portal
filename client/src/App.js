@@ -8,10 +8,13 @@ import Home from './components/home/Home';
 import DetailView from './components/post/DetailView';
 import CreateView from './components/post/CreateView';
 import UpdateView from './components/post/UpdateView';
-import CreateDoctor from './components/post/CreateDoctor';
+import CreateDoctor from './components/doctorPost/CreateDoctor';
 import Signup from './components/signup';
 import Login from './components/login';
-import DoctorSpeciality from './components/DoctorSpeciality';
+import DoctorSpeciality from './components/doctorPost/DoctorSpeciality';
+import DoctorCards from './components/doctorPost/DoctorCards';
+
+
 
 function App() {
   const user = localStorage.getItem("token")
@@ -28,6 +31,8 @@ function App() {
           <Route exact path="/signup" element = {<Signup />}/>
           <Route exact path="/createDoctor" element={<CreateDoctor/>}/>
           <Route exact path="/speciality" element={<DoctorSpeciality/>}/>
+          <Route exact path="/Doctors" element={<DoctorCards/>}/>
+          {/* <Route exact path="/DoctorPosts" element={<DoctorPosts/>}/> */}
           <Route exact path="/" element={<Navigate replace to = "/login" />} />
 
         </Routes>

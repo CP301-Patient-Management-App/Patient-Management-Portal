@@ -111,7 +111,7 @@ const DetailView = ({ match }) =>{
             <img src = {post.picture || url} alt = "banner" className={classes.image}/>
             <Box className={classes.icons}>
             <Button className = {classes.doc} style={{background: '#E7F2F8'}}variant="contained">
-               <Link to = {`/specialty`}>
+               <Link to = {'/speciality'} style={{color: 'black' ,textDecoration: 'none'}}>
                 See Available Doctors
                 </Link>
                 </Button>

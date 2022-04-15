@@ -1,10 +1,7 @@
 
-// import post from '../schema/post-schema.js';
 import Post from '../schema/post-schema.js';
 import Doctor from '../schema/doctor-schema.js';
 import {User, validate} from '../schema/user-schema.js';
-// const validate = require('../schema/user-schema.js');
-// const bcrypt = require("bcrypt");
 import bcrypt from 'bcrypt';
 
 

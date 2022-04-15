@@ -11,7 +11,7 @@ const DoctorSchema = new mongoose.Schema({
         required: false
     },
     
-    category: {
+    categories: {
         type: String,
         required: false   
     },
