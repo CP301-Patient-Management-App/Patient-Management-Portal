@@ -2,7 +2,7 @@ import Banner from './Banner';
 import Categories from './Categories';
 import Posts from "./Posts"
 import { Grid } from '@material-ui/core';
-const Home = () => {
+const Home = ({searchItem}) => {
     return (
         <>
             <Banner />
@@ -11,7 +11,7 @@ const Home = () => {
                     <Categories />
                 </Grid>
                 <Grid container item xs={12} sm={10} lg={10}>
-                    <Posts />
+                    <Posts searchItem={searchItem}/>
                 </Grid>
             </Grid>
         </>

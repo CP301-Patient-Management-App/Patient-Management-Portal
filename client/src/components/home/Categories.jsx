@@ -1,4 +1,4 @@
-
+import React, { useState, useEffect, useContext } from 'react';
 import { Button, Table, TableHead, TableRow, TableCell, TableBody, makeStyles, Grid } from '@material-ui/core';
 import { Link,useLocation } from 'react-router-dom';
 
@@ -24,17 +24,27 @@ const useStyle = makeStyles({
     },
     link: {
         textDecoration: 'none',
-        color: 'inherit'
+        color: 'inherit',
     },
     cell : {
         fontSize: 15,
+        border: 'none'
+    },
+    elemactive :{
+        backgroundColor:'lightblue',
+        transition: '0.2s all ease-in-out',
+    },
+    elemdeactive :{
+        transition: '0.2s all ease-in-out',
     }
 })
 
 const Categories = ({ match }) => {
     const classes = useStyle();
     const location = useLocation();
-
+    let catg = new URLSearchParams(location.search).get("categories");
+    if (catg==null)
+        catg='General';
     // let params = new URLSearchParams(location.search);
     return (
         <>
@@ -53,12 +63,12 @@ const Categories = ({ match }) => {
                 <TableBody>
                     {
                         categories.map(category => (
-                            <TableRow>
+                            <TableRow className={classes.tablerow}>
+                                <Link to={`/?categories=${category}`} className={(category===catg)?classes.elemactive:classes.elemdeactive} style={{display:"block", textDecoration:"none"}}>
                                 <TableCell  className = {classes.cell}>
-                                    <Link to={`/?categories=${category}`} className={classes.link}>
                                         {category}
-                                    </Link>
                                 </TableCell>
+                                    </Link>
                             </TableRow>
                         ))
                     }

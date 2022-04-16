@@ -1,5 +1,7 @@
 import { Box } from '@material-ui/core';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import React, { useState } from 'react';
+
 
 //components
 
@@ -18,13 +20,16 @@ import DoctorCards from './components/doctorPost/DoctorCards';
 
 function App() {
   const user = localStorage.getItem("token")
+  const [searchItem, setSearchItem] = useState("");
+
+
   return (
     <BrowserRouter>
-      {user && <Header />}
+      {user && <Header setSearchItem={setSearchItem} />}
       <Box >
         <Routes>
           <Route exact path="/login" element = {<Login />}/>
-          {user && <Route exact path="/" element={<Home/>}/>}
+          {user && <Route exact path="/" element={<Home  searchItem={searchItem}/>}/>}
           {user && <Route exact path="/details/:id" element={<DetailView/>}/>}
           {user && <Route exact path="/create" element={<CreateView/>}/>}
           {user && <Route exact path="/update/:id" element={<UpdateView/>}/>}
