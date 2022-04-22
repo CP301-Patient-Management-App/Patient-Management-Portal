@@ -19,7 +19,8 @@ import DoctorCards from './components/doctorPost/DoctorCards';
 
 
 function App() {
-  const user = localStorage.getItem("token")
+	const user  = JSON.parse(localStorage.getItem('token'))
+  // const user = localStorage.getItem("token")
   const [searchItem, setSearchItem] = useState("");
 
 
@@ -29,6 +30,7 @@ function App() {
       <Box >
         <Routes>
           <Route exact path="/login" element = {<Login />}/>
+          
           {user && <Route exact path="/" element={<Home  searchItem={searchItem}/>}/>}
           {user && <Route exact path="/details/:id" element={<DetailView/>}/>}
           {user && <Route exact path="/create" element={<CreateView/>}/>}

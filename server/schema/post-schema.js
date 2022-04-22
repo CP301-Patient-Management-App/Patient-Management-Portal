@@ -5,6 +5,10 @@ const PostSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    title : {
+        type : String,
+        required : false
+    },
     
     description: {
         type: String,
@@ -23,6 +27,10 @@ const PostSchema = mongoose.Schema({
         type: Date
     },
     NAME: {
+        type: String,
+        required: true
+    },
+    Email: {
         type: String,
         required: true
     },

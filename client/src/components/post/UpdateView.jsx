@@ -66,7 +66,6 @@ const useStyle = makeStyles(theme => ({
 }));
 
 const initialPost = {
-    // title: '',
     description: '',
     picture: '',
     username: 'Vinay',

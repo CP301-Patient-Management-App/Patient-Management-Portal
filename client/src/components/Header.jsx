@@ -45,6 +45,8 @@ const Header = ({ setSearchItem }) => {
     const handleLogout = () => {
 		localStorage.removeItem("token");
 		window.location.reload();
+		window.location = "/";
+        
 	}
 
     const handleChange = (e) => {

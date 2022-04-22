@@ -46,8 +46,6 @@ export const deletePost = async (id) => {
 export const getAllPosts = async (param) =>  {
     try {
         let response = await axios.get(`${URL}/posts/${param}`);
-        //console.log(response.data)
-        // console.log(typeof(param));
         return response.data;
     } catch(error) {
         console.log('Error while calling getAllPosts API', error);
@@ -60,6 +58,17 @@ export const getPost = async (id) => {
         return response.data;
     } catch (error) {
         console.log('Error while calling getPost API ', error);
+    }
+}
+
+export const getUser = async (email) => {
+    try {
+        console.log(email)
+        let response = await axios.get(`${URL}/postss/${email}`);
+		// console.log(24324)
+        return response.data;
+    } catch (error) {
+        console.log('Error while calling getUser API ', error);
     }
 }
 

@@ -70,6 +70,16 @@ export const getPost = async (request, response) => {
         response.status(500).json(error)
     }
 }
+export const getUser = async (request, response) => {
+    try {
+		// console.log("controller getUser")
+        const post = await Post.findOne({ Email: request.params.email });
+
+        response.status(200).json(post);
+    } catch (error) {
+        response.status(500).json(error)
+    }
+}
 
 export const updatePost = async (request, response) => {
     try {
@@ -120,13 +130,8 @@ export const registerUser = async (req, res) => {
 
 export const loginUser = async (req, res) => {
 	try {
-		// const { error } = Validate(req.body);
-		// if (error)
-		// 	return res.status(400).send({ message: error.details[0].message });
-        
-
 		const user = await User.findOne({ email: req.body.email });
-        console.log(22)
+        // console.log(22)
         
 		if (!user)
 			return res.status(401).send({ message: "Invalid Email or Password" });
@@ -138,7 +143,8 @@ export const loginUser = async (req, res) => {
 		if (!validPassword)
 			return res.status(401).send({ message: "Invalid Email or Password" });
 		const token = user.generateAuthToken();
-		res.status(200).send({ data: token, message: "logged in successfully" });
+		// console.log(user)
+		res.status(200).send({ data: user, message: "logged in successfully" });
 	} catch (error) {
 		res.status(500).send({ message: "Internal Server Error" });
 	}

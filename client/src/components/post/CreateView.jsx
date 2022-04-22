@@ -65,7 +65,6 @@ const useStyle = makeStyles(theme => ({
 }));
 
 const initialPost = {
-    // title: '',
     description: '',
     picture: '',
     username: 'Vinay',
@@ -74,7 +73,9 @@ const initialPost = {
     NAME : '',
     AGE : '',
     Imageurl : '',
-    PHONE : ''
+    PHONE : '',
+    title : '',
+    Email : ''
 }
 
 const CreateView = () => {
@@ -121,6 +122,7 @@ const CreateView = () => {
          setCategory(e.target.value);
         // console.log(e.target.name);
          setPost({ ...post, [e.target.name]: e.target.value });
+         setPost({...post, title : post.PHONE})
      }
     return (
         <Box className={classes.container}>
@@ -139,10 +141,17 @@ const CreateView = () => {
                 />
                 {/* <AddCircle   className={classes.circle} onChange={(e) => setFile(e.target.files[0])} fontSize='large' color = "action" /> */}
             </div>
+           
             <TextField id="standard-basic" label="NAME" variant="standard" 
                 className={classes.fields}
                 onChange = {(e) =>handleChange(e)}
                 name = 'NAME'
+            
+            />
+            <TextField id="standard-basic" label="Email" variant="standard" 
+                className={classes.fields}
+                onChange = {(e) =>handleChange(e)}
+                name = 'Email'
             
             />
             <TextField id="standard-basic" label="AGE" variant="standard" 

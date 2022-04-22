@@ -3,7 +3,10 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import styles from "./styles.module.css";
 
+import {getUser} from '../../service/api.js'
+
 const Login = () => {
+	const user  = JSON.parse(localStorage.getItem('token'))
 	const [data, setData] = useState({ email: "", password: "" });
 	const [error, setError] = useState("");
 
@@ -16,8 +19,18 @@ const Login = () => {
 		try {
 			const url = "http://localhost:8000/loginUser";
 			const { data: res } = await axios.post(url, data);
-			localStorage.setItem("token", res.data);
-			window.location = "/";
+			localStorage.setItem("token", JSON.stringify(res.data));
+			if(user.categories === 'Admin') {
+				console.log("Admin")
+				window.location = "/";
+			}
+			else {
+				let data = await getUser(user.email);
+				console.log("User")
+				window.location = `/details/${data._id}`;
+			}
+
+
 		} catch (error) {
 			if (
 				error.response &&

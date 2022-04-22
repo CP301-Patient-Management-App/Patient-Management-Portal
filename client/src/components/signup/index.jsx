@@ -1,9 +1,20 @@
 import { useState } from "react";
 import axios from "axios";
+import { Box, makeStyles, FormControl, MenuItem, Select, InputLabel } from '@material-ui/core';
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./styles.module.css";
 
+const useStyle = makeStyles(theme => ({
+    container: {
+        margin: '50px 100px',
+        [theme.breakpoints.down('md')]: {
+            margin: 0
+        },
+    }
+}));
+
 const Signup = () => {
+    const classes = useStyle();
 	const [data, setData] = useState({
 		firstName: "",
 		lastName: "",
@@ -11,6 +22,8 @@ const Signup = () => {
 		password: "",
 	});
 	const [error, setError] = useState("");
+    const [category, setCategory] = useState('General');
+
 	const navigate = useNavigate();
 
 	const handleChange = ({ currentTarget: input }) => {
@@ -34,7 +47,12 @@ const Signup = () => {
 			}
 		}
 	};
+	const handleMenu = (e) => {
+         setCategory(e.target.value);
+        //  setPost({ ...post, [e.target.name]: e.target.value });
+		setData({ ...data, [e.target.name]: e.target.value });
 
+     }
 	return (
 		<div className={styles.signup_container}>
 			<div className={styles.signup_form_container}>
@@ -85,6 +103,20 @@ const Signup = () => {
 							required
 							className={styles.input}
 						/>
+						<FormControl className={classes.fields}>
+							<InputLabel id="demo-simple-select-label">CATEGORY</InputLabel>
+								<Select
+									labelId="demo-simple-select-label"
+									id="demo-simple-select"
+									value = {category}
+									name = "categories"
+									onChange = {handleMenu}
+								>
+								<MenuItem   value = {'Admin'}>Admin</MenuItem>
+								<MenuItem   value = {'User'}>User</MenuItem>
+								
+								</Select>
+						</FormControl>
 						{error && <div className={styles.error_msg}>{error}</div>}
 						<button type="submit" className={styles.green_btn}>
 							Sign Up
