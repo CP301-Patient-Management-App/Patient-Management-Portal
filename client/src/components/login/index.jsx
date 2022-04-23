@@ -6,7 +6,6 @@ import styles from "./styles.module.css";
 import {getUser} from '../../service/api.js'
 
 const Login = () => {
-	const user  = JSON.parse(localStorage.getItem('token'))
 	const [data, setData] = useState({ email: "", password: "" });
 	const [error, setError] = useState("");
 
@@ -20,6 +19,7 @@ const Login = () => {
 			const url = "http://localhost:8000/loginUser";
 			const { data: res } = await axios.post(url, data);
 			localStorage.setItem("token", JSON.stringify(res.data));
+			const user  = JSON.parse(localStorage.getItem('token'));
 			if(user.categories === 'Admin') {
 				console.log("Admin")
 				window.location = "/";

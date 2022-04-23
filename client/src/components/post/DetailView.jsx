@@ -14,7 +14,7 @@ const useStyle = makeStyles(theme => ({
         paddingBottom: '20px',
         paddingLeft: '50px',
         paddingRight: '50px',
-        width: '100%',
+        // width: '100%',
         height: '20vh',
         
     },
@@ -90,6 +90,7 @@ const DetailView = ({ match }) =>{
    
 
     useEffect(() => {
+    	const user  = JSON.parse(localStorage.getItem('token'));
         const fetchData = async () => {
             let data = await getPost(id);
             console.log(data);
@@ -119,7 +120,7 @@ const DetailView = ({ match }) =>{
                     <Edit className={classes.icon} color = 'primary'/>
                 </Link>
                 
-                <Delete onClick={() => deleteRecord()} className={classes.icon} color = 'error'/>   
+                <Delete onClick={() => deleteRecord()} className={classes.icon} color = 'error'/>
                 
             </Box>
             {/* <Typography className={classes.heading}>{post.title}</Typography> */}

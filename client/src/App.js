@@ -2,9 +2,6 @@ import { Box } from '@material-ui/core';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import React, { useState } from 'react';
 
-
-//components
-
 import Header from './components/Header';
 import Home from './components/home/Home';
 import DetailView from './components/post/DetailView';
@@ -26,12 +23,12 @@ function App() {
 
   return (
     <BrowserRouter>
-      {user && <Header setSearchItem={setSearchItem} />}
+      {user && user.categories === 'Admin' && <Header setSearchItem={setSearchItem} />}
       <Box >
         <Routes>
           <Route exact path="/login" element = {<Login />}/>
           
-          {user && <Route exact path="/" element={<Home  searchItem={searchItem}/>}/>}
+          {user && user.categories === 'Admin' && <Route exact path="/" element={<Home  searchItem={searchItem}/>}/>}
           {user && <Route exact path="/details/:id" element={<DetailView/>}/>}
           {user && <Route exact path="/create" element={<CreateView/>}/>}
           {user && <Route exact path="/update/:id" element={<UpdateView/>}/>}
