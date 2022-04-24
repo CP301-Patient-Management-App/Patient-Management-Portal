@@ -7,15 +7,15 @@
   
   table {
     border-collapse: collapse;
-    width: 80%;
+    width: 60%;
   }
   
   th,
   td {
     border: 1px solid #ffffff;
     text-align: left;
-    padding: 8px;
-    font-size: 20px;
+    padding: 6px;
+    font-size: 16px;
   }
   
   th {
@@ -37,11 +37,9 @@
   }
   
   form * {
-    font-size: 16px;
+    font-size: 12px;
   }
 
   .mainTable {
-    padding-top: 60px;
+    padding-top: 40px;
   }
-
-  

@@ -5,6 +5,7 @@ import React, { useState, useEffect } from 'react';
 import {getPost, deletePost} from '../../service/api.js'
 import { useParams } from 'react-router-dom';
 import { useNavigate  } from 'react-router-dom';
+import "./styles.css";
 
 
 const useStyle = makeStyles(theme => ({
@@ -81,7 +82,31 @@ const DetailView = ({ match }) =>{
     const Navigate =   useNavigate();
     const [post, setPost] = useState({});
     const { id } = useParams();
-   
+
+    const hnldeClick = () => {
+        setShow(true);
+        console.log("Show current prescription");
+        console.log(show)
+    };
+    const data = [
+        {
+          id: 1001,
+          medicine: 'Combiflame',
+          quantity: '500mg',
+          Dosage: '2'
+        },
+        {
+          id: 1002,
+          medicine: 'Dolopar',
+          quantity: '100mg',
+          Dosage: '3'
+        }
+      ];
+    const [show, setShow] = useState(false);
+    
+    const hideModal = () => {
+        setShow(false);
+    };
 
     useEffect(() => {
     	const user  = JSON.parse(localStorage.getItem('token'));
@@ -142,14 +167,56 @@ const DetailView = ({ match }) =>{
             </Typography>
             <Box className={classes.subheading}>
 
-            <Button style={{marginRight: 'auto',background: '#E7F2F8'}}variant="contained">See current Presciption</Button>
+            <Button onClick = {hnldeClick} style={{marginRight: 'auto',background: '#E7F2F8'}}variant="contained">See current Presciption</Button>
             <Button style={{background: '#E7F2F8'}}variant="contained">See Current Bill</Button>
             
             </Box>
-         
+            {show && <Modal details={data} handleClose={hideModal} />}
+
         </Box>
         </>
+
+
     
     )
-}
-export default DetailView;
+    }
+    export default DetailView;
+
+    const Modal = ({ handleClose, details }) => {
+        console.log(details)
+        return (
+          <div className="modal display-block">
+            <section className="modal-main">
+              <div className="App">
+              <button style={{marginLeft: '58.25%'}} onClick={handleClose}>x</button>
+                <table className="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Id</th>
+                      <th scope="col">Medicine</th>
+                      <th scope="col">Quantity</th>
+                      <th scope="col">Dosage</th>
+      
+                    </tr>
+                   
+                  </thead>
+                  {details.map(detail => (
+                  <tbody>
+                    <tr>
+                      <td>{detail.id}</td>
+                      <td>{detail.medicine}</td>
+                      <td>{detail.quantity}</td>
+                      <td>{detail.Dosage}</td>
+                    </tr>
+                  </tbody>
+                  ))
+                  }
+                </table>
+              </div>
+             
+            </section>
+          </div>
+        );
+      };
+    
+

@@ -45,7 +45,8 @@ const PostSchema = mongoose.Schema({
     username: {
         type: String,
         required: true
-    }
+    },
+    
 });
 
 
