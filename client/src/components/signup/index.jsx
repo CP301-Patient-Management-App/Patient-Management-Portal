@@ -10,6 +10,10 @@ const useStyle = makeStyles(theme => ({
         [theme.breakpoints.down('md')]: {
             margin: 0
         },
+		fields : {
+			width : '80%',
+			// backgroundColor : 'black'
+		}, 
     }
 }));
 

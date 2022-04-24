@@ -1,8 +1,8 @@
 import { Box, makeStyles, Typography, Grid, Button } from '@material-ui/core';
 import { Delete, Edit } from '@material-ui/icons';
-import { Link, useHistory } from 'react-router-dom'
-import React, { useState, useEffect, useContext } from 'react';
-import {getPost,updatePost,deletePost} from '../../service/api.js'
+import { Link } from 'react-router-dom'
+import React, { useState, useEffect } from 'react';
+import {getPost, deletePost} from '../../service/api.js'
 import { useParams } from 'react-router-dom';
 import { useNavigate  } from 'react-router-dom';
 
@@ -14,25 +14,18 @@ const useStyle = makeStyles(theme => ({
         paddingBottom: '20px',
         paddingLeft: '50px',
         paddingRight: '50px',
-        // width: '100%',
         height: '20vh',
         
     },
     image: {
-        // paddingLeft: '50px',
         width: '220px',
         height: '220px',
         borderRadius: '50%',
-        aspectRatio: 'auto',
-        
-        
-        
+        aspectRatio: 'auto',  
     },
     icons: {
-        
         float: 'right',
         paddingRight: 135
-        
     },
     icon: {
         backgroundColor: '#bfd3d6',
@@ -83,6 +76,7 @@ const useStyle = makeStyles(theme => ({
 
 
 const DetailView = ({ match }) =>{
+	const user  = JSON.parse(localStorage.getItem('token'))
     const classes = useStyle();
     const Navigate =   useNavigate();
     const [post, setPost] = useState({});
@@ -107,7 +101,7 @@ const DetailView = ({ match }) =>{
     const url = post.Imageurl || 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLlQ9DL2jP_heI_mtZXdw8cxNdGunsejk7FQ&usqp=CAU';
 
     return(
-        <Box>
+        <>
         <Box className={classes.container}>
             <img src = {post.picture || url} alt = "banner" className={classes.image}/>
             <Box className={classes.icons}>
@@ -117,13 +111,13 @@ const DetailView = ({ match }) =>{
                 </Link>
                 </Button>
                 <Link to = {`/update/${post._id}`}>
-                    <Edit className={classes.icon} color = 'primary'/>
+                {user && user.categories === 'Admin' && <Edit className={classes.icon} color = 'primary'/>}
                 </Link>
                 
-                <Delete onClick={() => deleteRecord()} className={classes.icon} color = 'error'/>
+                {user && user.categories === 'Admin' && <Delete onClick={() => deleteRecord()} className={classes.icon} color = 'error'/>}
                 
             </Box>
-            {/* <Typography className={classes.heading}>{post.title}</Typography> */}
+
             </Box>
         
             <Box className={classes.details}>
@@ -154,7 +148,7 @@ const DetailView = ({ match }) =>{
             </Box>
          
         </Box>
-        </Box>
+        </>
     
     )
 }

@@ -1,7 +1,8 @@
 import { AppBar, Toolbar, Typography, makeStyles, TextField, List, Button } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import React, { useState } from 'react';
-
+// import styles from './post/styles.css'; 
+import {Navbar, NavDropdown, Offcanvas, Nav, Container, Form, FormControl}  from 'react-bootstrap'
 
 // const useStyles 
 
@@ -14,6 +15,7 @@ const useStyle = makeStyles({
         justifyContent: 'center',
         color : 'white',
         background: '#4b53bc',
+        // opacity: 0.9,
 
         '&  > *': {
             padding: 20,
@@ -28,14 +30,18 @@ const useStyle = makeStyles({
     navs : {
         fontSize: 20,
         fontWeight : 150
-    }
-    // name : {
-    //     fontWeight: 900,
-    //     fontSize : 25,
-    //     marginTop : "1%",
-    //     // marginBottom : "0%"
+    }, 
+    search : {
+        // backgroundColor : 'black',
+        height : 10
+    },
+    searchBox : {
+        backgroundColor : 'white',
+        width : '100%',
+        borderRadius : 4,
+        // height : "50px",
 
-    // }
+    }
 })
 
 const Header = ({ setSearchItem }) => {
@@ -90,3 +96,9 @@ const Header = ({ setSearchItem }) => {
 }
 
 export default Header;
+
+
+{/* <Navbar scrolling dark expand="md" fixed="top" class="navbar navbar-expand-lg fixed-top navbar-scroll">
+        <Container class="container-fluid">
+        </Container>
+</Navbar> */}

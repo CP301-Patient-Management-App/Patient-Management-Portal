@@ -26,7 +26,11 @@ const Login = () => {
 			}
 			else {
 				let data = await getUser(user.email);
-				console.log("User")
+				// console.log(data)
+				if(data == null) {
+					setError("User with given email doesn't exist");
+				}
+				else 
 				window.location = `/details/${data._id}`;
 			}
 
