@@ -13,15 +13,18 @@ const useStyle = makeStyles({
     },
     container: {
         justifyContent: 'center',
-        color : 'white',
-        background: '#4b53bc',
+        color : '#eee',
+        background: '#006778',
         // opacity: 0.9,
 
         '&  > *': {
             padding: 20,
-            color: 'white',
-            textDecoration: 'none'
-        }
+            color: '#ddd',
+            textDecoration: 'none',
+           
+            
+        },
+        
     },
     Link : {
         textDecoration:'none',
@@ -29,18 +32,22 @@ const useStyle = makeStyles({
     },
     navs : {
         fontSize: 20,
-        fontWeight : 150
+        fontWeight : 150,
+        cursor: 'pointer',
+        '&:hover':{
+            color:'white',
+            transform: 'scale(1.07)',
+        },
+        transition: '0.1s all ease-in-out',
     }, 
     search : {
         // backgroundColor : 'black',
         height : 10
     },
     searchBox : {
-        backgroundColor : 'white',
         width : '100%',
         borderRadius : 4,
-        // height : "50px",
-
+        border:'2px solid #00AFC1'
     }
 })
 
@@ -76,15 +83,21 @@ const Header = ({ setSearchItem }) => {
         
         <div className="search">
             <TextField
+             inputProps={{ style: { color: "white" }}}
+             InputPlaceholderProps={{
+                style: { color: '#99c' },
+              }}
+            className={classes.searchBox}
+
             id="outlined-basic"
             variant="outlined"
             fullWidth
-            label="Search"
+            placeholder="Search"
             onChange = {(e) =>handleChange(e)}
             name = 'Search'
             />
         </div>
-        <Button variant="contained" color="primary" onClick = {() => handleClick()} > Search </Button>
+        {/* <Button variant="contained" color="primary" onClick = {() => handleClick()} > Search </Button> */}
 
 
             

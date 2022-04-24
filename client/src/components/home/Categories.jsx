@@ -13,7 +13,7 @@ const useStyle = makeStyles({
     write: {
         margin: 20,
         width: '85%',
-        background: '#E7F2F8',
+        background: '#00AFC1',
         color: 'black',
         textDecoration: 'none',
         fontSize: 15,
@@ -31,7 +31,7 @@ const useStyle = makeStyles({
         border: 'none'
     },
     elemactive :{
-        backgroundColor:'lightblue',
+        backgroundColor:'#95D1CC',
         transition: '0.2s all ease-in-out',
     },
     elemdeactive :{

@@ -2,7 +2,8 @@
 import { makeStyles, Box, Typography } from '@material-ui/core';
 
 const useStyle = makeStyles({
-    image: {
+    
+    image:  {
         marginTop: 64,
         width: '100%',
         background: `url(${'https://blog.cureatr.com/hubfs/images/blog/care%20management%20program.jpg'}) center/55% repeat-x #000`,
@@ -11,17 +12,50 @@ const useStyle = makeStyles({
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'top',
-        '& :first-child': {
-            fontfamily: "Dancing Script",
-            fontSize: 70,
-            color: 'black',
-            lineHeight: 1,
-            padding : 20
-        },
-        '& :last-child': {
-            fontSize: 20,
-            // background: '#FFFFFF',
-        }
+        opacity:0.4,
+        position:'absolute',
+        zIndex: 0,
+
+        // '& :first-child': {
+        //     fontfamily: "Dancing Script",
+        //     fontSize: 70,
+        //     color: 'white',
+        //     lineHeight: 1,
+        //     paddingTop : 80
+        // },
+        // '& :last-child': {
+        //     fontSize: 20,
+        //     // background: '#FFFFFF',
+        // },
+    },
+    imageBox : {
+        backgroundColor : 'black',
+        position: 'relative',
+        height: '55vh',
+        overflow: 'hidden',
+        marginTop: '20px',
+    }, 
+    text : {
+        color : 'white',
+        display:'inline-block',
+        fontFamily: "Lato",
+        fontSize: 70,
+        color: 'white',
+        lineHeight: 1,
+        paddingTop : 80,
+        textAlign: 'center',
+        width: '100%',
+        zIndex:3,
+        position: 'relative'
+    },
+    text2 : {
+        fontFamily: "Lato",
+        color : 'white',
+        display:'inline-block',
+        fontSize: 20,
+        width: '100%',
+        textAlign: 'center',
+        position: 'relative'
     }
 })
 
@@ -30,10 +64,25 @@ const Banner = () => {
     const url = 'https://cdn.pixabay.com/photo/2017/10/10/21/47/laptop-2838921_960_720.jpg';
     return (
         <>
-            <Box className={classes.image}>
-                <Typography>Patient Management Portal</Typography>
-                <Typography>Get Well Soon</Typography>
+        
+            <Box className={classes.imageBox}>
+                <style>
+                @import url('https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap');
+                </style>
+                <Box className={classes.image}>
+                    
+                </Box>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <Typography className={classes.text}>Patient Management Portal</Typography>
+                <br/>
+                <br/>
+                <br/>
+                <Typography className={classes.text2}>Get Well Soon!!</Typography>
             </Box>
+            
         </>
     )
 }

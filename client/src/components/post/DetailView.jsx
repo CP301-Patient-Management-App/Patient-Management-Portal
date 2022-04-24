@@ -5,13 +5,14 @@ import React, { useState, useEffect } from 'react';
 import {getPost, deletePost} from '../../service/api.js'
 import { useParams } from 'react-router-dom';
 import { useNavigate  } from 'react-router-dom';
-import "./styles.css";
+// import "./styles.css";
+import { Helmet } from "react-helmet";
 
 
 const useStyle = makeStyles(theme => ({
     container: {
         backgroundColor: '#a0b4b7',
-        paddingTop: '100px',
+        paddingTop: '150px',
         paddingBottom: '20px',
         paddingLeft: '50px',
         paddingRight: '50px',
@@ -127,6 +128,9 @@ const DetailView = ({ match }) =>{
 
     return(
         <>
+        <Helmet>
+        <link rel="stylesheet" href="/styles.css" />
+        </Helmet>
         <Box className={classes.container}>
             <img src = {post.picture || url} alt = "banner" className={classes.image}/>
             <Box className={classes.icons}>
