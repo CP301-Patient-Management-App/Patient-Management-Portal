@@ -11,7 +11,7 @@ const useStyle = makeStyles(theme => ({
             margin: 0
         },
 		fields : {
-			width : '80%',
+			width : '20px'
 			// backgroundColor : 'black'
 		}, 
     }
@@ -110,6 +110,7 @@ const Signup = () => {
 						<FormControl className={classes.fields}>
 							<InputLabel id="demo-simple-select-label">CATEGORY</InputLabel>
 								<Select
+									
 									labelId="demo-simple-select-label"
 									id="demo-simple-select"
 									value = {category}

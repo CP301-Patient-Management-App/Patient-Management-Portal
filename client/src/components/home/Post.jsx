@@ -15,7 +15,7 @@ const useStyle = makeStyles({
             // fontWeight: '600'
         },
         "&:hover" : {
-            transform: 'scale(1.07)',
+            transform: 'scale(1.005)',
             boxShadow: '0 13px 40px -5px hsla(240, 30.1%, 28%, 0.12), 0 8px 32px -8px hsla(0, 0%, 0%, 0.14), 0 -6px 32px -6px hsla(0, 0%, 0%, 0.02)',
             background : '#B1D4E0',
         },
