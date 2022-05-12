@@ -32,7 +32,7 @@ const ContactUs= () => {
         <div class={classes.row}>
         <div class={classes.column}>
             <div class={classes.card}>
-            <img src={"CP301-LOGOv2.png"} style={{width:"50%"}}/>
+            <img src={"m1.png"} style={{width:"50%"}}/>
             <div class={classes.container}>
             <h2>Chennamolla Vinay</h2>
                 <p class={classes.title}>EE, IIT Ropar</p>
@@ -43,7 +43,7 @@ const ContactUs= () => {
 
         <div class={classes.column}>
             <div class={classes.card}>
-            <img src={"CP301-LOGOv2.png"} style={{width:"50%"}}/>
+            <img src={"m2.png"} style={{width:"72%"}}/>
             <div class={classes.container}>
             <h2>Swapnil Saurav</h2>
                 <p class={classes.title}>EE, IIT Ropar</p>
@@ -54,7 +54,7 @@ const ContactUs= () => {
 
         <div class={classes.column}>
             <div class={classes.card}>
-            <img src={"CP301-LOGOv2.png"} style={{width:"50%"}}/>
+            <img src={"m3.png"} style={{width:"50%"}}/>
             <div class={classes.container}>
                 <h2>Tushar Jain</h2>
                 <p class={classes.title}>EE, IIT Ropar</p>
@@ -66,7 +66,7 @@ const ContactUs= () => {
         <div class={classes.row}>
         <div class={classes.column}>
             <div class={classes.card}>
-            <img src={"CP301-LOGOv2.png"} style={{width:"50%"}}/>
+            <img src={"m4.png"} style={{width:"50%"}}/>
             <div class={classes.container}>
                 <h2>Tanishk Gupta</h2>
                 <p class={classes.title}>EE, IIT Ropar</p>
@@ -77,7 +77,7 @@ const ContactUs= () => {
 
         <div class={classes.column}>
             <div class={classes.card}>
-            <img src={"CP301-LOGOv2.png"} style={{width:"50%"}}/>
+            <img src={"m5.png"} style={{width:"59%"}}/>
             <div class={classes.container}>
                 <h2>Ajay Raj Meena</h2>
                 <p class={classes.title}>EE, IIT Ropar</p>
