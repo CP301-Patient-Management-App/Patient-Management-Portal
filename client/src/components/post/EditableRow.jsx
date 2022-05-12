@@ -1,13 +1,14 @@
 import React from "react";
 
 const EditableRow = ({
+  id,
   editFormData,
   handleEditFormChange,
   handleCancelClick,
   handleSaveClick,
 }) => {
   return (
-    <tr>
+    <tr id={id}>
       <td>
         <input
           type="text"
@@ -49,7 +50,7 @@ const EditableRow = ({
         ></input>
       </td>
       <td>
-        <button type="submit" onClick={handleSaveClick}>Save</button>
+        <button type="button" onClick={() => handleSaveClick(id)}>Save</button>
         <button type="button" onClick={handleCancelClick}>
           Cancel
         </button>

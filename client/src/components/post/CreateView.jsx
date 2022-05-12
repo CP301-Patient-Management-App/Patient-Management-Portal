@@ -74,7 +74,6 @@ const initialPost = {
     AGE : '',
     Imageurl : '',
     PHONE : '',
-    title : '',
     Email : ''
 }
 
@@ -111,7 +110,7 @@ const CreateView = () => {
 
     const savePost = async () => {
         await createPost(post);
-        navigate('/');
+        // navigate('/');
     }
 
     const handleChange = (e) => {
@@ -120,9 +119,9 @@ const CreateView = () => {
     const handleMenu = (e) => {
         // setPost({ ...post, [e.target.getAttribute("name")]: e.target.innerText });
          setCategory(e.target.value);
-        // console.log(e.target.name);
-         setPost({ ...post, [e.target.name]: e.target.value });
-         setPost({...post, title : post.PHONE})
+        console.log(e.target);
+         setPost({ ...post, [e.target.name] : e.target.value });
+        //  setPost({...post, title : post.PHONE})
      }
     return (
         <Box className={classes.container}>

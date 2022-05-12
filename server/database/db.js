@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 const Connection = async () => {
 
     try {
-        const URL = "mongodb+srv://vinay_00:9491674810@cluster0.jx1v5.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+        const URL = "mongodb+srv://swapnilsaurav:9308561049@patientmanagement.lioi0.mongodb.net/PatientManagement?retryWrites=true&w=majority";
         
         await mongoose.connect(URL);
         console.log("Database connected successfully");

@@ -5,11 +5,6 @@ const PostSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    title : {
-        type : String,
-        required : false
-    },
-    
     description: {
         type: String,
         required: true
@@ -31,6 +26,7 @@ const PostSchema = mongoose.Schema({
         required: true
     },
     Email: {
+        unique: true,
         type: String,
         required: true
     },
@@ -46,6 +42,10 @@ const PostSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    vitals_data : {
+        type : Array,
+        required : false
+    }
     
 });
 

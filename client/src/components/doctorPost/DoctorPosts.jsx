@@ -11,7 +11,7 @@ const DoctorPosts=() =>{
     // console.log(search)
 
     useEffect(() => {
-        console.log("usefeef")
+        // console.log("usefeef")
         const fetchData = async () => {
             // console.log(search)
             let data = await getAllDoctors(search);

@@ -92,3 +92,12 @@ export const getDoctor = async (id) => {
         console.log('Error while calling getPost API ', error);
     }
 }
+
+export const updateCell = async (id, post) => {
+    try {
+        return await axios.put(`${URL}/update/${id}`, post);
+        
+    } catch(error) {
+        console.log('Error while calling updatePost API ', error)
+    }
+}

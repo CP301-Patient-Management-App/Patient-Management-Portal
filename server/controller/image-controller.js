@@ -23,14 +23,15 @@ export const uploadImage = (request, response) => {
         return response.status(404).send("File not found");
     
     const imageUrl = `${url}/file/${request.file.filename}`;
-   console.log(imageUrl);
     response.status(200).send(imageUrl);    
 }
 
 export const getImage = async (request, response) => {
+
     try {   
         const file = await gfs.files.findOne({ filename: request.params.filename });
-        if(file.contentType === 'image/jpeg' || file.contentType  ==='image/png') 
+        
+        if(file && file.contentType === 'image/jpeg' || file.contentType  ==='image/png') 
             {
                 const readStream = gridfsBucket.openDownloadStream(file._id);
                 readStream.pipe(response);
