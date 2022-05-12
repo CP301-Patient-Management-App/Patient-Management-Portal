@@ -1,17 +1,18 @@
 import { AppBar, Toolbar, Typography, makeStyles, TextField, List, Button } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import React, { useState } from 'react';
-// import styles from './post/styles.css'; 
 import {Navbar, NavDropdown, Offcanvas, Nav, Container, Form, FormControl}  from 'react-bootstrap'
-
+import { LocalGasStationOutlined } from "@material-ui/icons";
 // const useStyles 
 
 const useStyle = makeStyles({
     component: {
+        width:"100%",
         background: '#FFFFFF',
         color : 'black'
     },
     container: {
+        width:"100%",
         justifyContent: 'center',
         color : '#eee',
         background: '#006778',
@@ -41,7 +42,6 @@ const useStyle = makeStyles({
         transition: '0.1s all ease-in-out',
     }, 
     search : {
-        // backgroundColor : 'black',
         height : 10
     },
     searchBox : {
@@ -71,14 +71,22 @@ const Header = ({ setSearchItem }) => {
     }
     // console.log(search)
     return (
+        
         <AppBar className={classes.component}>
         <Toolbar className={classes.container}>
-          <Link to = '/'>
-          <Typography className={classes.navs}>Home</Typography>
-          </Link>
-          <Typography className={classes.navs}>About</Typography>
-          <Typography className={classes.navs}>Contact</Typography>
-          <Typography className={classes.navs} onClick={handleLogout}>Logout</Typography>
+            <Link to = '/'>
+                <img src={"CP301-LOGO.png"} style={{width:60,marginTop:-7}}/>
+            </Link>
+            <Link to = '/'>
+                <Typography className={classes.navs}>Home</Typography>
+            </Link>
+            <Link to = '/aboutus'>
+            <Typography className={classes.navs}>About</Typography>
+            </Link>
+            <Link to = '/contactus'>
+            <Typography className={classes.navs}>Contact</Typography>
+            </Link>
+            <Typography className={classes.navs} onClick={handleLogout}>Logout</Typography>
           
         
         <div className="search">

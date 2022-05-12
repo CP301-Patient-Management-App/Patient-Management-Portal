@@ -3,7 +3,6 @@ import { createPost,updatePost, getAllPosts,deletePost, getPost, registerUser, l
 import { getAllDoctors } from '../controller/doctor-controller.js';
 import { uploadImage, getImage } from '../controller/image-controller.js';
 import upload from '../utils/upload.js';
-
 const router = express.Router();
 
 router.post('/create', createPost);
